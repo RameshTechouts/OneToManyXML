@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping>
+	<class name="com.onetomany.controller.Question" table="question_tbl">
+		<id name="id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="qname"></property>
+		<list name="answers" cascade="all">
+           <key column="qid"></key>
+           <index column="type"></index>
+           <one-to-many class="com.onetomany.controller.Answer"></one-to-many>
+		</list>
+	</class>
+   
+    <class name="com.onetomany.controller.Answer" table="ans_tbl">
+      <id name="id">
+         <generator class="increment"></generator>
+      </id>
+      <property name="answername"></property>
+      <property name="postedBy"></property>
+    </class>
+</hibernate-mapping>
